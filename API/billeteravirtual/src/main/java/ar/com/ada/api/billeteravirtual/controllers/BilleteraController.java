@@ -1,7 +1,10 @@
 package ar.com.ada.api.billeteravirtual.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import ar.com.ada.api.billeteravirtual.services.BilleteraService;
 
 /**
  * BilleteraController
@@ -13,11 +16,4 @@ public class BilleteraController {
     BilleteraService billeteraService;
 
 
-    @GetMapping("/billeteras")
-    public List<Movimiento> GetMovimientos()
-    {
-        List<Movimiento> movimientos = billeteraService.getMovimientos();
-        
-        return movimientos;
-    }
 }

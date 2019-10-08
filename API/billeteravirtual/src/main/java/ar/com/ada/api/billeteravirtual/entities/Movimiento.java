@@ -15,16 +15,23 @@ public class Movimiento {
     @Column(name = "idmovimiento")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idmovimiento;
+    @Column(name = "fechamovimiento")
     private Date fechaMovimiento;
     private double importe;
    // private float ubicacion;
+    @Column(name = "tipooperacion")
     private String tipoOperacion;
+    @Column(name = "conceptooperacion")
     private String conceptoOperacion;
     private String detalle;
     private int estado;
+    @Column(name = "cuentadestino")
     private int cuentaDestino;
+    @Column(name = "cuentaorigen")
     private int cuentaOrigen;
+    @Column(name = "deusuario")
     private int deUsuario;
+    @Column(name = "ausuario")
     private int aUsuario;
     
    

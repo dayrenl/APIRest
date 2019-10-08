@@ -21,7 +21,9 @@ public class Cuenta {
     private int idcuenta;
     private String moneda;
     private double saldo;
+    @Column(name = "saldodisponible")
     private double saldoDisponible;
+    @Column(name = "numerocuenta")
     private double numeroCuenta;
 
     @ManyToOne 
