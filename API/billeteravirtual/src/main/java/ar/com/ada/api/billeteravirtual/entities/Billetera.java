@@ -79,5 +79,22 @@ public class Billetera {
         this.cuentas = cuentas;
     }
 
+	public void movimientoTransferencia(Double importe, Usuario usuarioOrigen, Usuario usuarioDestino) {
+        Movimiento m = new Movimiento();
+        m.setTipoOperacion("tipoOperacion");
+        m.setConceptoOperacion("");
+        m.setDetalle("Transferencia");
+        m.setEstado(1);
+        m.setImporte(importe);
+        m.setFechaMovimiento(new Date());
+        m.setDeUsuario(usuarioOrigen.getUsuarioId());
+        m.setaUsuario(usuarioDestino.getUsuarioId());
+        m.setCuentaOrigen(usuarioDestino.getPersona().getPesonaId());
+        m.setCuentaDestino(usuarioDestino.getPersona().getPesonaId());
+        this.cuentas.get(0).agregarMovimiento(m);
+
+
+    }
+
     
 }

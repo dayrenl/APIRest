@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.ada.api.billeteravirtual.entities.Billetera;
+import ar.com.ada.api.billeteravirtual.entities.Cuenta;
 import ar.com.ada.api.billeteravirtual.entities.Persona;
 import ar.com.ada.api.billeteravirtual.entities.Usuario;
 import ar.com.ada.api.billeteravirtual.repo.UsuarioRepository;
@@ -21,7 +22,7 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepo;
 
-    public void altaUsuario(String nombre, String dni, Integer edad, String email, String password) throws Exception {
+    public int altaUsuario(String nombre, String dni, Integer edad, String email, String password) throws Exception {
         Usuario u = new Usuario();
         u.setEmail(email);
         u.setUsername(email);
@@ -41,9 +42,15 @@ public class UsuarioService {
             p.setEmail(email);
 
             Billetera b = new Billetera();
+            Cuenta c = new Cuenta();
+            b.agregarCuenta(c);
+            
             usuarioRepo.save(u);
-        } else {}
 
+
+        } 
+
+        return u.getUsuarioId();
     }
 
     public List<Usuario> getUsuarios() {
@@ -62,5 +69,9 @@ public class UsuarioService {
 
     public Usuario save(Usuario u) {
         return usuarioRepo.save(u);
+    }
+
+    public Usuario buscarPorEmail(String email) {
+        return usuarioRepo.findByEmail(email);
     }
 }

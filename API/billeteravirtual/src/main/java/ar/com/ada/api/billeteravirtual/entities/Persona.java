@@ -101,5 +101,8 @@ public class Persona {
         this.billetera = billetera;
     }
 
+    public Billetera getBilletera() {
+        return billetera;
+    }
 
 }
