@@ -11,5 +11,6 @@ public class RegistrationRequest {
     public int edad;
     public String email;
     public String password;
+    public String moneda;
     
 }

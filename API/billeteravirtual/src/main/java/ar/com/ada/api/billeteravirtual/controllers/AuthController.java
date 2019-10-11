@@ -22,7 +22,7 @@ public class AuthController {
         RegistrationResponse r = new RegistrationResponse();
 
        
-        usuarioService.altaUsuario(req.nombre, req.dni, req.edad, req.email, req.password);
+        usuarioService.altaUsuario(req.nombre, req.dni, req.edad, req.email, req.password, req.moneda);
 
         r.isOk = true;
         r.message = "Te registraste con exito";

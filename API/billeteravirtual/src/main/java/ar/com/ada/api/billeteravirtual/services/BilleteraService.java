@@ -39,4 +39,9 @@ public class BilleteraService {
         billeteraRepo.save(b);
         billeteraRepo.save(u.getPersona().getBilletera());
     }
+
+    public Billetera save(Billetera b) {
+        return billeteraRepo.save(b);
+        
+    }
 }

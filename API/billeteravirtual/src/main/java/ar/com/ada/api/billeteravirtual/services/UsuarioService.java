@@ -21,8 +21,14 @@ public class UsuarioService {
 
     @Autowired
     UsuarioRepository usuarioRepo;
+    @Autowired
+    PersonaService personaService;
+    @Autowired
+    BilleteraService billeteraService;
+    @Autowired
+    CuentaService cuentaService;
 
-    public int altaUsuario(String nombre, String dni, Integer edad, String email, String password) throws Exception {
+    public int altaUsuario(String nombre, String dni, Integer edad, String email, String password, String moneda) throws Exception {
         Usuario u = new Usuario();
         u.setEmail(email);
         u.setUsername(email);
@@ -40,10 +46,21 @@ public class UsuarioService {
             p.setDni(dni);
             p.setEdad(edad);
             p.setEmail(email);
+            p.setUsuario(u);
+            
+            personaService.save(p);
 
             Billetera b = new Billetera();
+            b.setPersona(p);
+            billeteraService.save(b);
+
             Cuenta c = new Cuenta();
-            b.agregarCuenta(c);
+            c.setBilletera(b);
+            c.setMoneda(moneda);
+            cuentaService.save(c);
+
+            
+            
             
             usuarioRepo.save(u);
 

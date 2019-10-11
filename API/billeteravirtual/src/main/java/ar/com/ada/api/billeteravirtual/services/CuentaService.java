@@ -28,4 +28,9 @@ public class CuentaService {
             return c.get();
         return null;
     }
+
+    public Cuenta save(Cuenta c) {
+        return cuentaRepo.save(c);
+        
+    }
 }
