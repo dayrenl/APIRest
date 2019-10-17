@@ -29,15 +29,17 @@ public class BilleteraService {
         return null;
     }
 
-    public void crearTranferencia(Double importe, Integer billeteraIdOrigen, String emailDestino)
+    public void crearTranferencia(Double importe, Integer billeteraOrigen, String emailDestino, String conceptoOperacion, String tipoOperacion, int estado, String moneda)
     {
-        Billetera b = billeteraRepo.findById(billeteraIdOrigen).get();
+
+        Billetera b = billeteraRepo.findById(billeteraOrigen).get();
         Usuario u = usuarioService.buscarPorEmail(emailDestino);
         u.getPersona().getBilletera();
-        b.movimientoTransferencia(importe, b.getPersona().getUsuario(), u);
+        b.movimientoTransferencia(importe, b.getPersona().getUsuario(), u, conceptoOperacion, tipoOperacion, moneda,
+                estado);
 
         billeteraRepo.save(b);
-        billeteraRepo.save(u.getPersona().getBilletera());
+        billeteraRepo.save(u.getPersona().getBilletera()); 
     }
 
     public Billetera save(Billetera b) {

@@ -79,17 +79,17 @@ public class Billetera {
         this.cuentas = cuentas;
     }
 
-	public void movimientoTransferencia(Double importe, Usuario usuarioOrigen, Usuario usuarioDestino) {
+	public void movimientoTransferencia(Double importe, Usuario usuarioOrigen, Usuario usuarioDestino, String tipoOperacon, String conceptoOperacion, String moneda, int estado) {
         Movimiento m = new Movimiento();
-        m.setTipoOperacion("tipoOperacion");
-        m.setConceptoOperacion("");
+        m.setTipoOperacion(tipoOperacon);
+        m.setConceptoOperacion(conceptoOperacion);
         m.setDetalle("Transferencia");
         m.setEstado(1);
         m.setImporte(importe);
         m.setFechaMovimiento(new Date());
         m.setDeUsuario(usuarioOrigen.getUsuarioId());
         m.setaUsuario(usuarioDestino.getUsuarioId());
-        m.setCuentaOrigen(usuarioDestino.getPersona().getPesonaId());
+        m.setCuentaOrigen(usuarioOrigen.getPersona().getPesonaId());
         m.setCuentaDestino(usuarioDestino.getPersona().getPesonaId());
         this.cuentas.get(0).agregarMovimiento(m);
 

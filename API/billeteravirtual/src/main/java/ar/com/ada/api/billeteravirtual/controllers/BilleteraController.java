@@ -30,12 +30,13 @@ public class BilleteraController {
     public TransferResponse postTransfer(@RequestBody TransferRequest req) {
       
         TransferResponse t = new TransferResponse();
-        billeteraService.crearTranferencia(req.importe, req.billeteraIdOrigen, req.emailDestino);
+        billeteraService.crearTranferencia(req.importe, req.billeteraOrigen, req.emailDestino, req.conceptoOperacion, req.tipoOperacion, req.estado, req.moneda);
         
         t.isOk = true;
         t.message = "Transferencia exitosa";
         return t;
     }
+
 
     @GetMapping("/billeteras/{id}/saldos")
     public ArrayList<SaldoResponse> getBilleteraById(@PathVariable int id ) {

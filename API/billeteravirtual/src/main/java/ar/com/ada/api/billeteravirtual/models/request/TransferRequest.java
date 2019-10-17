@@ -6,6 +6,10 @@ package ar.com.ada.api.billeteravirtual.models.request;
 public class TransferRequest {
 
     public Double importe;
-    public Integer billeteraIdOrigen;
+    public Integer billeteraOrigen;
     public String emailDestino;
+    public String conceptoOperacion;
+    public String tipoOperacion;
+    public int estado;
+    public String moneda;
 }
